@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="10dp"
+    android:paddingEnd="10dp"
+    android:weightSum="1"
+    android:gravity="center"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="수강 신청 내역이 없습니다....\n\n 지금 바로 수강신청을 해보세요."
+        android:textColor="#000"
+        android:textSize="20sp" />
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:text="수강 신청 하러가기"
+        android:textSize="18sp"
+        android:padding="20dp"
+        android:textStyle="bold"
+        android:textColor="#C62828"
+        android:background="@drawable/selector_button"
+        />
+
+
+</LinearLayout>
