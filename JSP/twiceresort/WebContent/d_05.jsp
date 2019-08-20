@@ -4,7 +4,7 @@
 <%@ page
 	import="java.sql.*,javax.sql.*,java.io.*, java.text.*, java.util.Date"%>
 <%@ page import="java.util.*"%>
-<%@ page import="dao.JoaDao,dto.JoaDto,caldate.CalDate"%>
+<%@ page import="dao.JoaDao,dto.JoaDto,caldate.CalDate,option.Option"%>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!DOCTYPE html>
 
@@ -14,16 +14,25 @@
 <style>
 
 /* a태그에 색깔 및 밑줄 없애기*/
+a:link {
+	color: black;
+	text-decoration: none;
+}
 
- a:link { color: black; text-decoration: none;}
- a:visited { color: black; text-decoration: none;}
- a:hover { text-decoration: none;}
+a:visited {
+	color: black;
+	text-decoration: none;
+}
 
+a:hover {
+	text-decoration: none;
+}
 
 /* button에 마우스를 갖다대면 투명하게 만들기 */
 button:hover {
-  opacity: 0.8;
+	opacity: 0.8;
 }
+
 table {
 	border-collapse: collapse;
 	width: 50%;
@@ -96,119 +105,126 @@ tr:nth-child(even) {
 			object.value = object.value.slice(0, object.maxLength);
 		}
 	}
-	
 </script>
 
 <head>
 <jsp:include page="Navigation.jsp" flush="false" />
 </head>
 <body>
-<!-- Page Content -->
-  <div class="container">
+	<!-- Page Content -->
+	<div class="container">
 
-    <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">예약자 상세정보 보기
-     
-    </h1>
+		<!-- Page Heading/Breadcrumbs -->
+		<h1 class="mt-4 mb-3">예약자 상세정보 보기</h1>
 
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="newindex.jsp">HOME으로 돌아가기</a>
-      </li>
-      <li class="breadcrumb-item active">예약자 상세정보입니다.</li>
-    </ol>
-    
-   
-	<%
-		String resv_date = new String(request.getParameter("resv_date").getBytes("8859_1"), "UTF-8");
-		String room = new String(request.getParameter("room").getBytes("8859_1"), "UTF-8");
-		int introom = Integer.parseInt(room);
-		String roomname = "";
-		String firstDate= new String(request.getParameter("resv_date").getBytes("8859_1"), "UTF-8");
-		String firstRoom= new String(request.getParameter("room").getBytes("8859_1"), "UTF-8");
-		int intFirstRoom = Integer.parseInt(firstRoom);
-		
-		JoaDao dao = JoaDao.sharedInstance();
-		String name = dao.selectname(resv_date, introom);
-		String addr = dao.selectaddr(resv_date, introom);
-		int telnumber = dao.selecttelnum(resv_date, introom);
-		String iname = dao.selectiname(resv_date, introom);
-		String comment = dao.selectcomment(resv_date, introom);
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="newindex.jsp">HOME으로
+					돌아가기</a></li>
+			<li class="breadcrumb-item active">예약자 상세정보입니다.</li>
+		</ol>
 
-		String nowdate;
-		CalDate caldate = new CalDate();
-		nowdate = caldate.caldate();
 
-		String adddate;
-		String mindate;
-		adddate = CalDate.addDate(nowdate, 0, 0, -2);
-	%>
+		<%
+			String resv_date = new String(request.getParameter("resv_date").getBytes("8859_1"), "UTF-8");
+			String room = new String(request.getParameter("room").getBytes("8859_1"), "UTF-8");
+			int introom = Integer.parseInt(room);
+			String roomname = "";
+			String firstDate = new String(request.getParameter("resv_date").getBytes("8859_1"), "UTF-8");
+			String firstRoom = new String(request.getParameter("room").getBytes("8859_1"), "UTF-8");
+			int intFirstRoom = Integer.parseInt(firstRoom);
 
-	<form name="form" id="form" class="w3-container"
-		onsubmit="return f(this)">
-		<div>
+			JoaDao dao = JoaDao.sharedInstance();
+			String name = dao.selectname(resv_date, introom);
+			String addr = dao.selectaddr(resv_date, introom);
+			int telnumber = dao.selecttelnum(resv_date, introom);
+			String iname = dao.selectiname(resv_date, introom);
+			String comment = dao.selectcomment(resv_date, introom);
 
-			<p>
-				<label class="w3-text-brown"><b>성명</b></label> <input
-					class="w3-input w3-border w3-sand" name="name" id="name"
-					type="text" value="<%=name%>" required>
-			</p>
-			<p>
-				<label class="w3-text-brown"><b>예약일자</b></label> <input
-					class="w3-input w3-border w3-sand" type="date" name="date"
-					value="<%=resv_date%>" required min="<%=nowdate%>"
-					max="<%=adddate%>">
-			</p>
-			<p>
-				<label class="w3-text-brown"><b>예약방</b></label> <select
-					class="w3-text-brown" name="option" id="option">
-					<option class="w3-text-brown" value="1">VIP룸</option>
-					<option class="w3-text-brown" value="2">일반룸</option>
-					<option class="w3-text-brown" value="3">합리적인 룸</option>
-				</select>
-			</p>
-			<p>
-			<p>
-				<label class="w3-text-brown"><b>주소</b></label> <input type="text"
-					id="roadAddress" name="roadAddress" value="<%=addr%>" size="70"
-					required><br>
-			</p>
-			<p>
-				<br>
+			String nowdate;
+			CalDate caldate = new CalDate();
+			nowdate = caldate.caldate();
 
-			</p>
-			<p>
-				<label class="w3-text-brown"><b>전화번호</b></label> 
-				<input	class="w3-input w3-border w3-sand" name="phone_number" maxlength="11" id="phone_number" type="number" oninput="maxLengthCheck(this)" value="<%=telnumber%>" required>
-			</p>
-			<p>
-				<label class="w3-text-brown"><b>입금자명</b></label> 
-				<input class="w3-input w3-border w3-sand" name="iname" id="iname" type="text" value="<%=iname%>" required>
-			</p>
-			<p>
-				<label class="w3-text-brown"><b>남기실 말</b></label> <input
-					class="w3-input w3-border w3-sand" name="comment" id="option"
-					value="<%=comment%>" readonly> <input type=hidden
-					class="w3-input w3-border w3-sand" name="processing" id="option"
-					value="3" readonly>
+			String adddate;
+			String mindate;
+			adddate = CalDate.addDate(nowdate, 0, 0, -2);
+
+			//룸번호를 가지고 이름으로 바꾸어준다.
+			Option roomoption = new Option(); //Option 클래스의 객체인 roomoption을 생성.
+			roomname = roomoption.roomoption(introom); //roomoption 메서드에서 값을 가지고 옴.
+		%>
+
+		<form name="form" id="form" class="w3-container"
+			onsubmit="return f(this)">
+			<div>
+
+				<p>
+					<label class="w3-text-brown"><b>성명</b></label> <input
+						class="w3-input w3-border w3-sand" name="name" id="name"
+						type="text" value="<%=name%>" required>
+				</p>
+				<p>
+					<label class="w3-text-brown"><b>예약일자</b></label> <input
+						class="w3-input w3-border w3-sand" type="date" name="date"
+						value="<%=resv_date%>" required min="<%=nowdate%>"
+						max="<%=adddate%>">
+				</p>
+				<p>
+					고객이 처음 예약하신 룸: <strong><%=roomname%> (<%=introom%>번 방)</strong>
+				</p>
+				<p>
+					<label class="w3-text-brown"><b>예약방</b></label> <select
+						class="w3-text-brown" name="option" id="option">
+						<option class="w3-text-brown" value="1">모찌모찌 룸</option>
+						<option class="w3-text-brown" value="2">쯔뭉 룸</option>
+						<option class="w3-text-brown" value="3">나부기 룸</option>
+					</select>
+				</p>
+				<p>
+				<p>
+					<label class="w3-text-brown"><b>주소</b></label> <input type="text"
+						id="roadAddress" name="roadAddress" value="<%=addr%>" size="70"
+						required><br>
+				</p>
+				<p>
 					<br>
-			
-				<input type="hidden" name="firstDate"value="<%=firstDate%>">
-				<input type="hidden" name="firstRoom"value="<%=intFirstRoom%>">
-				<br>
-			<input type="submit" value="수정" formaction="d_update.jsp"></input>
-				
-		</p>
-	
-	
-	</form>
-	
-	
-	<button><a href ="d_delete.jsp?date=<%=firstDate%>&room=<%=intFirstRoom%>">삭제</a></button>
-</div>
-</div>
+
+				</p>
+				<p>
+					<label class="w3-text-brown"><b>전화번호</b></label> <input
+						class="w3-input w3-border w3-sand" name="phone_number"
+						maxlength="11" id="phone_number" type="number"
+						oninput="maxLengthCheck(this)" value="<%=telnumber%>" required>
+				</p>
+				<p>
+					<label class="w3-text-brown"><b>입금자명</b></label> <input
+						class="w3-input w3-border w3-sand" name="iname" id="iname"
+						type="text" value="<%=iname%>" required>
+				</p>
+				<p>
+					<label class="w3-text-brown"><b>남기실 말</b></label> <input
+						class="w3-input w3-border w3-sand" name="comment" id="option"
+						value="<%=comment%>" readonly> <input type=hidden
+						class="w3-input w3-border w3-sand" name="processing" id="option"
+						value="3" readonly> <br> <input type="hidden"
+						name="firstDate" value="<%=firstDate%>"> <input
+						type="hidden" name="firstRoom" value="<%=intFirstRoom%>">
+					<br> <input type="submit" value="수정" formaction="d_update.jsp"
+						onclick="return confirm('정말로 수정하시겠습니까?');"></input>
+
+				</p>
+		</form>
+
+
+		<button>
+			<a href="d_delete.jsp?date=<%=firstDate%>&room=<%=intFirstRoom%>"
+				onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</a>
+		</button>
+	</div>
+	</div>
 	<!-- Footer -->
-	<br><br><br>
+	<br>
+	<br>
+	<br>
 	<footer class="py-5 bg-dark">
 		<div class="container">
 
@@ -224,6 +240,6 @@ tr:nth-child(even) {
 
 
 </body>
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </html>

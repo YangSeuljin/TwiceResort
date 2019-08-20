@@ -23,7 +23,7 @@
 <jsp:include page="Navigation.jsp" flush="true" />
 <meta charset="EUC-KR">
 <title>찾아오는길</title>
-<!-- Page Heading/Breadcrumbs -->
+
 <!-- Page Heading/Breadcrumbs -->
 <div class="container">
 	<h1 class="mt-4 mb-3">찾아오는 길</h1>
@@ -106,8 +106,7 @@
 				<div class="card-body">
 					<H4>[제주시외버스터미널 출발]</H4>
 					<H5>210-1 , 220-1 , 230-1 ,343-1 , 260 , 330-1 탑승</H5>
-					<br>
-					<br>
+					<br> <br>
 					<H4>[서귀포 시외버스터미널 출발]</H4>
 					<H5>230-1 , 210-1 , 220-1 탑승</H5>
 

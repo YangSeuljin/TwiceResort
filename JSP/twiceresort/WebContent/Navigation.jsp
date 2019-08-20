@@ -47,7 +47,7 @@
 						<div class="dropdown-menu dropdown-menu-right"
 							aria-labelledby="navbarDropdownPortfolio">
 							<a class="dropdown-item" href="resv.jsp">예약 상황</a> <a
-								class="dropdown-item" href="resvform2.jsp">예약하기</a>  
+								class="dropdown-item" href="resvform2.jsp">예약하기</a>
 
 						</div></li>
 					<li class="nav-item dropdown"><a
@@ -56,8 +56,8 @@
 							관리자 모드 </a>
 						<div class="dropdown-menu dropdown-menu-right"
 							aria-labelledby="navbarDropdownBlog">
-							<a class="dropdown-item" href="loginpage.jsp">관리자 로그인</a>
-							<a class="dropdown-item" href="logout.jsp">로그아웃 하기</a>
+							<a class="dropdown-item" href="loginpage.jsp">관리자 로그인</a> <a
+								class="dropdown-item" href="logout.jsp">로그아웃 하기</a>
 						</div></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog"
@@ -65,11 +65,10 @@
 							더 보기 </a>
 						<div class="dropdown-menu dropdown-menu-right"
 							aria-labelledby="navbarDropdownBlog">
-							<a class="dropdown-item" href="full-width.html">공지사항
-								</a> <a class="dropdown-item" href="sidebar.html">이용후기</a> 
-								
-								<a class="dropdown-item" href="membership.jsp">관리자 회원가입하기</a> 
-								<a class="dropdown-item" href="pricing.jsp">가격 안내</a>
+							<a class="dropdown-item" href="webgongji_list.jsp">공지사항 </a> <a
+								class="dropdown-item" href="sidebar.html">이용후기</a> <a
+								class="dropdown-item" href="membership.jsp">관리자 회원가입하기</a> <a
+								class="dropdown-item" href="pricing.jsp">가격 안내</a>
 						</div></li>
 				</ul>
 			</div>

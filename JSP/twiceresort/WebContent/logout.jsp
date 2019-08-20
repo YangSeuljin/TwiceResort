@@ -1,9 +1,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<%@ page contentType="text/html; charset=utf-8" %>
-<%@ page errorPage="error.jsp" %>
-<%@ page import="java.sql.*,javax.sql.*,java.io.*, java.text.*, java.util.Date" %>
-<%@ page import="java.util.*" %>
-<%@ page import="dao.JoaDao,dto.JoaDto,caldate.CalDate,option.Option" %>
+<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page errorPage="error.jsp"%>
+<%@ page
+	import="java.sql.*,javax.sql.*,java.io.*, java.text.*, java.util.Date"%>
+<%@ page import="java.util.*"%>
+<%@ page import="dao.JoaDao,dto.JoaDto,caldate.CalDate,option.Option"%>
 <!DOCTYPE html>
 <html>
 <head>

@@ -44,7 +44,7 @@
 						<li class="list-group-item">수영장, 바비큐장, 조식제공</li>
 						<li class="list-group-item">별도 바베큐장 제공</li>
 						<li class="list-group-item">최고급 스파</li>
-						<li class="list-group-item" align="center"><a href="resv.jsp"
+						<li class="list-group-item" align="center"><a href="resv1.jsp"
 							class="btn btn-primary"">지금 예약하기!</a></li>
 					</ul>
 				</div>
@@ -60,7 +60,7 @@
 						<li class="list-group-item">수영장, 바비큐장, 조식제공</li>
 						<li class="list-group-item">독채,침대방,가족실</li>
 						<li class="list-group-item">스파 제공</li>
-						<li class="list-group-item" align="center"><a href="resv.jsp"
+						<li class="list-group-item" align="center"><a href="resv2.jsp"
 							class="btn btn-primary">지금 예약하기!</a></li>
 					</ul>
 				</div>
@@ -76,7 +76,7 @@
 						<li class="list-group-item">수영장, 바비큐장, 조식제공</li>
 						<li class="list-group-item">복층,침대방,가족실</li>
 						<li class="list-group-item">넓은 방 보유</li>
-						<li class="list-group-item" align="center"><a href="resv.jsp"
+						<li class="list-group-item" align="center"><a href="resv3.jsp"
 							class="btn btn-primary">지금 예약하기!</a></li>
 					</ul>
 				</div>
@@ -94,16 +94,17 @@
 </body>
 
 <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-		   
-<p class="m-0 text-center text-white">(주) Twice Resort 제주 서귀포시 강정동    대표이사 : YSJ   개인정보관리 책임자: 박지효
-사업자등록번호 : 2015-10-20    통신판매업신고 : 2005-제주-151020    통신판매사업자 정보 
-CONTACT CENTER 1588-1234    운영시간 07:00 ~23:00 ( 연중무휴 )   이메일 TwiceResort@twice.com </p>
-			<p class="m-0 text-center text-white">Copyright &copy; Twice
-				Resort 2019</p>
-		</div>
-    <!-- /.container -->
-  </footer>
+<footer class="py-5 bg-dark">
+	<div class="container">
+
+		<p class="m-0 text-center text-white">(주) Twice Resort 제주 서귀포시 강정동
+			대표이사 : YSJ 개인정보관리 책임자: 박지효 사업자등록번호 : 2015-10-20 통신판매업신고 :
+			2005-제주-151020 통신판매사업자 정보 CONTACT CENTER 1588-1234 운영시간 07:00 ~23:00
+			( 연중무휴 ) 이메일 TwiceResort@twice.com</p>
+		<p class="m-0 text-center text-white">Copyright &copy; Twice
+			Resort 2019</p>
+	</div>
+	<!-- /.container -->
+</footer>
 
 </html>
