@@ -77,6 +77,7 @@ public class JoaDao {
 	//}
 	//}
 	//JoaDto는 DTO클래스를 의미한다.
+	
 	public List<JoaDto> getList(){
 		//데이터를 저장할 변수 생성. 여기서 객체 생성을 안하는 이유는 접속이 되었을 때만 객체 생성을 해야 의미가 있기 때문에
 		List<JoaDto> list = null;
@@ -123,6 +124,7 @@ public class JoaDao {
 		}
 		return list;
 	}
+	
 	public boolean Insertresv(JoaDto joadto) {
 		boolean result = false;
 
@@ -187,7 +189,7 @@ public class JoaDao {
 				joadto.setComment(rs.getString("comment"));
 				joadto.setWrite_date(rs.getString("write_date"));
 				joadto.setProcessing(rs.getInt("processing"));
-				
+
 				list.add(joadto);
 			}
 			rs.close();
@@ -197,7 +199,7 @@ public class JoaDao {
 		return list;  
 		//resv라는 테이블의 select문 실행
 	}
-	
+
 	public String selectname(String date,int room) throws SQLException{
 		//데이터를 저장할 변수 생성. 여기서 객체 생성을 안하는 이유는 접속이 되었을 때만 객체 생성을 해야 의미가 있기 때문에
 		String selectname = null;
@@ -223,10 +225,10 @@ public class JoaDao {
 		return selectname;  
 		//resv라는 테이블의 select문 실행
 	}
-	
-	
-	
-	
+
+
+
+
 	public String selectdate(String date,int room) throws SQLException{
 		//데이터를 저장할 변수 생성. 여기서 객체 생성을 안하는 이유는 접속이 되었을 때만 객체 생성을 해야 의미가 있기 때문에
 		String selectdate = null;
@@ -252,7 +254,7 @@ public class JoaDao {
 		return selectdate;  
 		//resv라는 테이블의 select문 실행
 	}
-	
+
 	public int selectroom(String date,int room) throws SQLException{
 		//데이터를 저장할 변수 생성. 여기서 객체 생성을 안하는 이유는 접속이 되었을 때만 객체 생성을 해야 의미가 있기 때문에
 		int selectroom = 0;
@@ -278,7 +280,7 @@ public class JoaDao {
 		return selectroom;  
 		//resv라는 테이블의 select문 실행
 	}
-	
+
 	public String selectaddr(String date,int room) throws SQLException{
 		//데이터를 저장할 변수 생성. 여기서 객체 생성을 안하는 이유는 접속이 되었을 때만 객체 생성을 해야 의미가 있기 때문에
 		String selectaddr = null;
@@ -304,7 +306,7 @@ public class JoaDao {
 		return selectaddr;  
 		//resv라는 테이블의 select문 실행
 	}
-	
+
 	public int selecttelnum(String date,int room) throws SQLException{
 		//데이터를 저장할 변수 생성. 여기서 객체 생성을 안하는 이유는 접속이 되었을 때만 객체 생성을 해야 의미가 있기 때문에
 		int selecttelnum = 0;
@@ -330,7 +332,7 @@ public class JoaDao {
 		return selecttelnum;  
 		//resv라는 테이블의 select문 실행
 	}
-	
+
 	public String selectiname(String date,int room) throws SQLException{
 		//데이터를 저장할 변수 생성. 여기서 객체 생성을 안하는 이유는 접속이 되었을 때만 객체 생성을 해야 의미가 있기 때문에
 		String selectiname = null;
@@ -356,7 +358,7 @@ public class JoaDao {
 		return selectiname;  
 		//resv라는 테이블의 select문 실행
 	}
-	
+
 	public String selectcomment(String date,int room) throws SQLException{
 		//데이터를 저장할 변수 생성. 여기서 객체 생성을 안하는 이유는 접속이 되었을 때만 객체 생성을 해야 의미가 있기 때문에
 		String selectcomment = null;
@@ -382,7 +384,7 @@ public class JoaDao {
 		return selectcomment;  
 		//resv라는 테이블의 select문 실행
 	}
-	
+
 	public String selectwritedate(String date,int room) throws SQLException{
 		//데이터를 저장할 변수 생성. 여기서 객체 생성을 안하는 이유는 접속이 되었을 때만 객체 생성을 해야 의미가 있기 때문에
 		String selectwritedate = null;
@@ -408,97 +410,84 @@ public class JoaDao {
 		return selectwritedate;  
 		//resv라는 테이블의 select문 실행
 	}
-	
+
 	public boolean update(JoaDto joadto) {
 		boolean result = false;
 		//데이터를 저장할 변수 생성. 여기서 객체 생성을 안하는 이유는 접속이 되었을 때만 객체 생성을 해야 의미가 있기 때문에
 		String selectname = null;
 		//수행할 sql문장을 생성.
 		if(this.connect()) { 
-		
-		try {
 
-			//DTO 클래스의 변수에 값을 세팅하기 위해 Set 메서드를 이용하고, Select의 결과를 컬럼 단위로 읽어오기 위해서 'get변수타입(컬럼명)' aptjemfmf dldyd
+			try {
 
-			String sql = "update resv set name=?,date=?,room=?,addr=?,telnum=?,in_name=?,comment=?,write_date=? where date=? and room=?";
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, joadto.getName());
-			pstmt.setString(2, joadto.getDate());
-			pstmt.setInt(3, joadto.getRoom());
-			pstmt.setString(4, joadto.getAddr());
-			pstmt.setInt(5, joadto.getTelnum());
-			pstmt.setString(6, joadto.getIn_name());
-			pstmt.setString(7, joadto.getComment());
-			pstmt.setString(8, joadto.getWrite_date());
-			pstmt.setString(9, joadto.getfirstDate());
-			pstmt.setInt(10, joadto.getfirstRoom());
-			
-			int r= pstmt.executeUpdate();
+				//DTO 클래스의 변수에 값을 세팅하기 위해 Set 메서드를 이용하고, Select의 결과를 컬럼 단위로 읽어오기 위해서 'get변수타입(컬럼명)' aptjemfmf dldyd
 
-			if(r>0) {
-				result = true;
+				String sql = "update resv set name=?,date=?,room=?,addr=?,telnum=?,in_name=?,comment=?,write_date=? where date=? and room=?";
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, joadto.getName());
+				pstmt.setString(2, joadto.getDate());
+				pstmt.setInt(3, joadto.getRoom());
+				pstmt.setString(4, joadto.getAddr());
+				pstmt.setInt(5, joadto.getTelnum());
+				pstmt.setString(6, joadto.getIn_name());
+				pstmt.setString(7, joadto.getComment());
+				pstmt.setString(8, joadto.getWrite_date());
+				pstmt.setString(9, joadto.getfirstDate());
+				pstmt.setInt(10, joadto.getfirstRoom());
+
+				int r= pstmt.executeUpdate();
+
+				if(r>0) {
+					result = true;
+				}
+				//데이터베이스 생성 객체 해제
+				pstmt.close();
+
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
 			}
-			//데이터베이스 생성 객체 해제
-			pstmt.close();
-
-		}catch (SQLException e) {
-			System.out.println(e.getMessage());
+		}else {
+			System.out.println("데이터베이스 연결에 실패");
+			System.exit(0);
 		}
-	}else {
-		System.out.println("데이터베이스 연결에 실패");
-		System.exit(0);
+		return result;
 	}
-	return result;
-	}
-	
-	
+
+
 	public boolean delete(JoaDto joadto) {
 		boolean result = false;
 		//데이터를 저장할 변수 생성. 여기서 객체 생성을 안하는 이유는 접속이 되었을 때만 객체 생성을 해야 의미가 있기 때문에
 		String selectname = null;
 		//수행할 sql문장을 생성.
 		if(this.connect()) { 
-		
-		try {
 
-			//DTO 클래스의 변수에 값을 세팅하기 위해 Set 메서드를 이용하고, Select의 결과를 컬럼 단위로 읽어오기 위해서 'get변수타입(컬럼명)' aptjemfmf dldyd
+			try {
 
-			String sql = "delete from resv where date=? and room=?";
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, joadto.getDate());
-			pstmt.setInt(2, joadto.getRoom());
-			
-			int r= pstmt.executeUpdate();
+				//DTO 클래스의 변수에 값을 세팅하기 위해 Set 메서드를 이용하고, Select의 결과를 컬럼 단위로 읽어오기 위해서 'get변수타입(컬럼명)' aptjemfmf dldyd
 
-			if(r>0) {
-				result = true;
+				String sql = "delete from resv where date=? and room=?";
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, joadto.getDate());
+				pstmt.setInt(2, joadto.getRoom());
+
+				int r= pstmt.executeUpdate();
+
+				if(r>0) {
+					result = true;
+				}
+				//데이터베이스 생성 객체 해제
+				pstmt.close();
+
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
 			}
-			//데이터베이스 생성 객체 해제
-			pstmt.close();
-
-		}catch (SQLException e) {
-			System.out.println(e.getMessage());
+		}else {
+			System.out.println("데이터베이스 연결에 실패");
+			System.exit(0);
 		}
-	}else {
-		System.out.println("데이터베이스 연결에 실패");
-		System.exit(0);
+		return result;
 	}
-	return result;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 
 
 	/*	public static int save(Exam u){  

@@ -83,15 +83,15 @@ public class MembershipDto {
 		return eagree;
 	}
 
-	public void setComment(String comment) {
-		this.eagree = comment;
+	public void seteagree(String eagree) {
+		this.eagree = eagree;
 	}
 
 	public String getSmsagree() {
 		return smsagree;
 	}
 
-	public void setSmsagree(String write_date) {
+	public void setSmsagree(String smsagree) {
 		this.smsagree = smsagree;
 	}
 

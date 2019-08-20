@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import dto.JoaDto;
+import dto.MembershipDto;
 
 public class MembershipDao {
 	
@@ -14,11 +15,11 @@ public class MembershipDao {
 
 	}
 
-	private static JoaDao obj;
+	private static MembershipDao obj;
 
-	public static JoaDao sharedInstance() {
+	public static MembershipDao sharedInstance() {
 		if(obj == null) {
-			obj = new JoaDao();
+			obj = new MembershipDao();
 		}
 		System.out.println(obj);
 		return obj;
@@ -47,23 +48,23 @@ public class MembershipDao {
 	}
 	
 	
-	public boolean Insertresv(JoaDto joadto) {
+	public boolean Insert(MembershipDto MembershipDto) {
 		boolean result = false;
 
 		if(this.connect()) {
 			try {
+				
 				//값이 삽입되어야 하는 자리에는 물음표
-				String sql = "INSERT INTO resv VALUES(?,?,?,?,?,?,?,?,?);"; //모든 컬럼에 값을 넣으므로 컬럼명을 모두 생략
+				String sql = "INSERT INTO membership VALUES(?,?,?,?,?,?,?);"; //모든 컬럼에 값을 넣으므로 컬럼명을 모두 생략
 				PreparedStatement pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, joadto.getName());
-				pstmt.setString(2, joadto.getDate());
-				pstmt.setInt(3, joadto.getRoom());
-				pstmt.setString(4, joadto.getAddr());
-				pstmt.setInt(5, joadto.getTelnum());
-				pstmt.setString(6, joadto.getIn_name());
-				pstmt.setString(7, joadto.getComment());
-				pstmt.setString(8, joadto.getWrite_date());
-				pstmt.setInt(9, joadto.getProcessing());
+				pstmt.setString(1, MembershipDto.getId());
+				pstmt.setString(2, MembershipDto.getPassword());
+				pstmt.setString(3, MembershipDto.getName());
+				pstmt.setString(4, MembershipDto.getEmail());
+				pstmt.setString(5, MembershipDto.getPhone());
+				pstmt.setString(6, MembershipDto.geteAgree());
+				pstmt.setString(7, MembershipDto.getSmsagree());
+			
 
 				int r= pstmt.executeUpdate();
 
@@ -82,5 +83,93 @@ public class MembershipDao {
 		}
 		return result;
 	}
+		
+		public String selectid(String id) throws SQLException{
+			//데이터를 저장할 변수 생성. 여기서 객체 생성을 안하는 이유는 접속이 되었을 때만 객체 생성을 해야 의미가 있기 때문에
+			String selectid = null;
+			//수행할 sql문장을 생성.
+			if(connect()) {
+			}
+			try {
 
+				//DTO 클래스의 변수에 값을 세팅하기 위해 Set 메서드를 이용하고, Select의 결과를 컬럼 단위로 읽어오기 위해서 'get변수타입(컬럼명)' aptjemfmf dldyd
+
+				String sql = "SELECT id FROM membership where id=?;";
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+				ResultSet rs=pstmt.executeQuery();
+				if(rs.next()) {
+					selectid=rs.getString(1);
+				}
+				rs.close();
+				pstmt.close();
+				conn.close();
+			}catch(Exception e){System.out.println(e);}  
+			return selectid;  
+			//resv라는 테이블의 select문 실행
+		}
+		
+		public String selectpassword(String id) throws SQLException{
+			//데이터를 저장할 변수 생성. 여기서 객체 생성을 안하는 이유는 접속이 되었을 때만 객체 생성을 해야 의미가 있기 때문에
+			String selectPassword = null;
+			//수행할 sql문장을 생성.
+			if(connect()) {
+			}
+			try {
+
+				//DTO 클래스의 변수에 값을 세팅하기 위해 Set 메서드를 이용하고, Select의 결과를 컬럼 단위로 읽어오기 위해서 'get변수타입(컬럼명)' aptjemfmf dldyd
+
+				String sql = "SELECT password FROM membership where id=?;";
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+				ResultSet rs=pstmt.executeQuery();
+				if(rs.next()) {
+					selectPassword=rs.getString(1);
+				}
+				rs.close();
+				pstmt.close();
+				conn.close();
+			}catch(Exception e){System.out.println(e);}  
+			return selectPassword;  
+			//resv라는 테이블의 select문 실행
+		}
+		
+		public int confirmId(String id) throws SQLException{
+			//데이터를 저장할 변수 생성. 여기서 객체 생성을 안하는 이유는 접속이 되었을 때만 객체 생성을 해야 의미가 있기 때문에
+			int x=-1;
+			//수행할 sql문장을 생성.
+			if(connect()) {
+			}
+			try {
+
+				//DTO 클래스의 변수에 값을 세팅하기 위해 Set 메서드를 이용하고, Select의 결과를 컬럼 단위로 읽어오기 위해서 'get변수타입(컬럼명)' aptjemfmf dldyd
+
+				String sql = "SELECT id FROM membership where id=?;";
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+				ResultSet rs=pstmt.executeQuery();
+				if(rs.next()) {
+					x=1; //해당 아이디가 있다면
+				}
+				else
+					x=-1; //해당 아이디가 없다면
+				rs.close();
+				pstmt.close();
+				conn.close();
+			}catch(Exception e){System.out.println(e);}  
+			  
+			//resv라는 테이블의 select문 실행
+		
+			return x;
+		}
+		
+		
+		
+		
+		
+		
 }
+		
+	
+
+
