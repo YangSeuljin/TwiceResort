@@ -1,4 +1,4 @@
-<!--한 달간 예약 상황을 조회하는 페이지입니다. -->
+<!--3번방의 예약 상황을 개별로 보여주는 페이지입니다.-->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page errorPage="error.jsp"%>
@@ -57,12 +57,12 @@ table.type10 .even {
 	<div class="container">
 
 		<!-- Page Heading/Breadcrumbs -->
-		<h1 class="mt-4 mb-3">예약 상황</h1>
+		<h1 class="mt-4 mb-3">나부기룸 예약 상황</h1>
 
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="newindex.jsp">HOME으로
 					돌아가기</a></li>
-			<li class="breadcrumb-item active">예약 상황 보기</li>
+			<li class="breadcrumb-item active">나부기룸 예약 상황 보기</li>
 		</ol>
 	</div>
 
@@ -73,10 +73,6 @@ table.type10 .even {
 			<thead>
 				<tr>
 					<th width="10%" height="50px" scope="cols" text-align="center"><h2>날짜</h2></th>
-					<th width="10%" scope="cols">모찌모찌 <br> Room
-					</td>
-					<th width="10%" scope="cols">쯔뭉 <br>Room
-					</td>
 					<th width="10%" scope="cols">나부기 <br> Room
 					</td>
 
@@ -101,66 +97,6 @@ table.type10 .even {
 						%>
 					</td>
 
-					<td width="10%">
-						<%
-							JoaDao dao = JoaDao.sharedInstance();
-								List<JoaDto> list = dao.selectone(strDate, 1);
-
-								if (list.size() == 0) {
-									out.println("<a href = 'http://192.168.23.102:8090/twiceresort/resvform.jsp?resv_date=" + strDate
-											+ "&room=1&processing=2&date=" + date + "'>예약가능</a>");
-								}
-								//out.println(list.get(0));				
-
-								if (list.size() > 0) {
-									String str = String.valueOf(list.get(0));
-									Option changeName = new Option();
-									String newname = changeName.changename(str);
-									out.println(newname);
-								}
-
-								//out.println(list.get(0));
-								//String str = String.valueOf(list.get(0));
-								//out.println(str);
-								//String str = String.valueOf(list.get(0));
-								//out.println(list.get(1));
-
-								//out.println(str);
-								//for (i=0;i<list.size();i++){
-								//	String str = String.valueOf(list.get(i));
-								//	String sublist=str.substring(1,3);
-								//	out.println(sublist);
-								//;}	
-								//if(list==null){
-
-								//	out.println("<a href = 'http://localhost:8090/joa/d_02.jsp?resv_date=" + strDate
-								//				+ "&room=1&processing=2&date=" + date + "'>예약하기</a>");
-								//	}
-								//	else {
-								//		out.println("예약불가");
-								//}
-						%>
-
-					</td>
-					<td width="10%">
-						<%
-							JoaDao dao_room2 = JoaDao.sharedInstance();
-								List<JoaDto> list_room2 = dao_room2.selectone(strDate, 2);
-
-								if (list_room2.size() == 0) {
-									out.println("<a href ='http://192.168.23.102:8090/twiceresort/resvform.jsp?resv_date=" + strDate
-											+ "&room=2&processing=2&date=" + date + "'>예약가능</a>");
-								}
-
-								if (list_room2.size() == 1) {
-									String str = String.valueOf(list_room2.get(0));
-									Option changeName = new Option();
-									String newname = changeName.changename(str);
-									out.println(newname);
-								}
-						%>
-
-					</td>
 					<td width="10%">
 						<%
 							JoaDao dao_room3 = JoaDao.sharedInstance();

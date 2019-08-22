@@ -17,17 +17,19 @@
 String userid = (String)session.getAttribute("userid");
 if(userid!=null){
 	session.invalidate();
-	out.println("<script>");
-	out.println("var con_test = confirm(\"어떤 값이 나올까요. 확인을 눌러보세요.\")");
-	out.println("document.write(con_test);");
-	out.println("</script>");
-	response.sendRedirect("newindex.jsp");
+	//out.println("<script>");
+	//out.println("var con_test = confirm(\"어떤 값이 나올까요. 확인을 눌러보세요.\")");
+	//out.println("document.write(con_test);");
+	//out.println("</script>");
+	response.sendRedirect("loginpage.jsp");
 }
 else{
+	
 	out.println("<script type=\"text/javascript\">");
-	out.println("alert('로그인 상태가 아닙니다.')");
-	out.println("</script>");
-	out.println("<button><a href='newindex.jsp'>홈으로 돌아가기</button>");
+	response.sendRedirect("loginpage.jsp");
+	//out.println("alert('로그인 상태가 아닙니다.')");
+	//out.println("</script>");
+	//out.println("<button><a href='newindex.jsp'>홈으로 돌아가기</button>");
 }
 
 %>

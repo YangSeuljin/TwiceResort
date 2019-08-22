@@ -183,7 +183,7 @@ to {
 		<div class="container" style="background-color: #f1f1f1">
 			<button type="button" class="cancelbtn"
 				onclick="location.href='membership.jsp'">관리자 회원 가입하기</button>
-			<span class="psw"><a href="#">비밀번호를 잊어버리셨습니까?</a></span>
+			<!--  <span class="psw"><a href="#">비밀번호를 잊어버리셨습니까?</a></span> -->
 		</div>
 	</form>
 	</div>

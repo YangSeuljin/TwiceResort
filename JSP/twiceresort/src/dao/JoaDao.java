@@ -105,7 +105,7 @@ public class JoaDao {
 					inform.setDate(rs.getString("date"));
 					inform.setRoom(rs.getInt("room"));
 					inform.setAddr(rs.getString("addr"));
-					inform.setTelnum(rs.getInt("telnum"));
+					inform.setTelnum(rs.getString("telnum"));
 					inform.setIn_name(rs.getString("in_name"));
 					inform.setComment(rs.getString("comment"));
 					inform.setWrite_date(rs.getString("write_date"));
@@ -137,7 +137,7 @@ public class JoaDao {
 				pstmt.setString(2, joadto.getDate());
 				pstmt.setInt(3, joadto.getRoom());
 				pstmt.setString(4, joadto.getAddr());
-				pstmt.setInt(5, joadto.getTelnum());
+				pstmt.setString(5, joadto.getTelnum());
 				pstmt.setString(6, joadto.getIn_name());
 				pstmt.setString(7, joadto.getComment());
 				pstmt.setString(8, joadto.getWrite_date());
@@ -184,7 +184,7 @@ public class JoaDao {
 				joadto.setDate(rs.getString("date"));
 				joadto.setRoom(rs.getInt("room"));
 				joadto.setAddr(rs.getString("addr"));
-				joadto.setTelnum(rs.getInt("telnum"));
+				joadto.setTelnum(rs.getString("telnum"));
 				joadto.setIn_name(rs.getString("in_name"));
 				joadto.setComment(rs.getString("comment"));
 				joadto.setWrite_date(rs.getString("write_date"));
@@ -307,9 +307,9 @@ public class JoaDao {
 		//resv라는 테이블의 select문 실행
 	}
 
-	public int selecttelnum(String date,int room) throws SQLException{
+	public String selecttelnum(String date,int room) throws SQLException{
 		//데이터를 저장할 변수 생성. 여기서 객체 생성을 안하는 이유는 접속이 되었을 때만 객체 생성을 해야 의미가 있기 때문에
-		int selecttelnum = 0;
+		String selecttelnum = "";
 		//수행할 sql문장을 생성.
 		if(connect()) {
 		}
@@ -323,7 +323,7 @@ public class JoaDao {
 			pstmt.setInt(2, room);
 			ResultSet rs=pstmt.executeQuery();
 			if(rs.next()) {
-				selecttelnum=rs.getInt(1);
+				selecttelnum=rs.getString(1);
 			}
 			rs.close();
 			pstmt.close();
@@ -428,7 +428,7 @@ public class JoaDao {
 				pstmt.setString(2, joadto.getDate());
 				pstmt.setInt(3, joadto.getRoom());
 				pstmt.setString(4, joadto.getAddr());
-				pstmt.setInt(5, joadto.getTelnum());
+				pstmt.setString(5, joadto.getTelnum());
 				pstmt.setString(6, joadto.getIn_name());
 				pstmt.setString(7, joadto.getComment());
 				pstmt.setString(8, joadto.getWrite_date());
@@ -486,6 +486,36 @@ public class JoaDao {
 			System.exit(0);
 		}
 		return result;
+	}
+	
+	public int confirmResv(String date,int room) throws SQLException{
+		//데이터를 저장할 변수 생성. 여기서 객체 생성을 안하는 이유는 접속이 되었을 때만 객체 생성을 해야 의미가 있기 때문에
+		int x=-1;
+		//수행할 sql문장을 생성.
+		if(connect()) {
+		}
+		try {
+
+			//DTO 클래스의 변수에 값을 세팅하기 위해 Set 메서드를 이용하고, Select의 결과를 컬럼 단위로 읽어오기 위해서 'get변수타입(컬럼명)' aptjemfmf dldyd
+
+			String sql = "SELECT date,room FROM resv where date=? and room=?;";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, date);
+			pstmt.setInt(2, room);
+			ResultSet rs=pstmt.executeQuery();
+			if(rs.next()) {
+				x=1; //해당 예약 정보가 있으면
+			}
+			else
+				x=-1; //해당 예약 정보가 없다면
+			rs.close();
+			pstmt.close();
+			conn.close();
+		}catch(Exception e){System.out.println(e);}  
+		  
+		//resv라는 테이블의 select문 실행
+	
+		return x;
 	}
 
 

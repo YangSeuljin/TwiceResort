@@ -1,3 +1,4 @@
+<!-- 직접 정보를 모두 입력하여 예약하는 페이지입니다. -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page errorPage="error.jsp"%>

@@ -1,3 +1,4 @@
+<!--리조트를 소개하는 페이지입니다.-->
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ page errorPage="error.jsp" %>
 <%@ page import="java.sql.*,javax.sql.*,java.io.*, java.text.*, java.util.Date" %>

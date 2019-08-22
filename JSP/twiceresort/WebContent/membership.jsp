@@ -1,3 +1,4 @@
+<!--관리자 회원으로 가입하는 페이지입니다.-->
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page errorPage="error.jsp"%>
 <%@ page
@@ -67,6 +68,19 @@ function openConfirmid(inputid){
 //새로운 윈도우 화면을 연다.
 open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=310,height=180")
 }
+
+function checkId(){
+	if(document.getElementById("idCheck").value == "N"){
+
+		alert("아이디 중복체크를 하세요.");
+		return false;
+
+		}
+	else{
+		alert("회원가입이 완료되었습니다.")
+		return true;
+	}
+}
 </script>
 </head>
 <body>
@@ -115,7 +129,7 @@ open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,scrollbars=no,
 
 
 		<form class="form-horizontal" role="form" method="get"
-			action="memberConfirm.jsp" name="userinput">
+			action="memberConfirm.jsp" name="userinput" onsubmit="return checkId()">
 
 			<div class="form-group" id="divId">
 				<label for="inputId" class="col-lg-2 control-label">아이디</label>
@@ -125,6 +139,7 @@ open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,scrollbars=no,
 						data-rule-required="true"
 						placeholder="30자이내의 알파벳, 언더스코어(_), 숫자만 입력 가능합니다." maxlength="30">
 				</div>
+				<input type="hidden" id="idCheck" name="idCheck" value="N"/>
 				<div class="button">
 					<input type="button" name="confirm_id" value="ID 중복확인"
 						OnClick="openConfirmid(this.form)" />
@@ -485,6 +500,7 @@ open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,scrollbars=no,
 						});
 
 			});
+
 		</script>
 		<!--// 본문 들어가는 부분 -->
 	</div>

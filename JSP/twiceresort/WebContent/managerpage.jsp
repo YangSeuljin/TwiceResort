@@ -1,3 +1,4 @@
+<!--관리자가 예약상황을 조회하고 클릭해서 수정/삭제가 가능한 관리자 페이지입니다.-->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page errorPage="error.jsp"%>
@@ -147,7 +148,7 @@ table.type10 .even {
 
 									else if (name != null) {
 
-										out.println("<a href =d_05.jsp?resv_date=" + strDate + "&room=1&processing=2&date=" + date
+										out.println("<a href =updatepage.jsp?resv_date=" + strDate + "&room=1&processing=2&date=" + date
 												+ "'>" + name + "</a>");
 									}
 
@@ -186,7 +187,7 @@ table.type10 .even {
 
 									else if (name_room2 != null) {
 
-										out.println("<a href =d_05.jsp?resv_date=" + strDate + "&room=2&processing=2&date=" + date
+										out.println("<a href =updatepage.jsp?resv_date=" + strDate + "&room=2&processing=2&date=" + date
 												+ "'>" + name_room2 + "</a>");
 									}
 						%>
@@ -204,7 +205,7 @@ table.type10 .even {
 
 									else if (name_room3 != null) {
 
-										out.println("<a href =d_05.jsp?resv_date=" + strDate + "&room=3&processing=2&date=" + date
+										out.println("<a href =updatepage.jsp?resv_date=" + strDate + "&room=3&processing=2&date=" + date
 												+ "'>" + name_room3 + "</a>");
 									}
 						%>

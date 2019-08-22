@@ -1,3 +1,4 @@
+<!--메인 화면입니다.-->
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page errorPage="error.jsp"%>
 <%@ page

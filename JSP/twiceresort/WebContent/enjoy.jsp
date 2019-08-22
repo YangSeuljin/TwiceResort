@@ -1,3 +1,4 @@
+<!--주변 여행지를 소개하는 페이지입니다.-->
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page errorPage="error.jsp"%>
 <%@ page

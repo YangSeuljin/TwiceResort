@@ -9,7 +9,7 @@ public class JoaDto {
 	private String firstDate;
 	private int room;
 	private String addr;
-	private int telnum;
+	private String telnum;
 	private String in_name;
 	private String comment;
 	private String write_date;
@@ -27,7 +27,7 @@ public class JoaDto {
 	}
 
 	//매개변수가 들어가는 생성자
-	public JoaDto(String name, String date, int room, String addr,int telnum,
+	public JoaDto(String name, String date, int room, String addr,String telnum,
 			String in_name, String comment, String write_date, int processing) {
 		this();
 		this.name = name;
@@ -77,11 +77,11 @@ public class JoaDto {
 		this.addr = addr;
 	}
 
-	public int getTelnum() {
+	public String getTelnum() {
 		return telnum;
 	}
 
-	public void setTelnum(int telnum) {
+	public void setTelnum(String telnum) {
 		this.telnum = telnum;
 	}
 
